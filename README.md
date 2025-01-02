@@ -1,41 +1,41 @@
 ![Artboard](https://github.com/leminlimez/Nugget-Mobile/blob/1881fdc2b721fd2675a2909e7fbc24769d11bb53/readme-images/icon.png)
 
 # Nugget (mobile)
-Unlock your device's full potential! Should work on all versions iOS 16.0 - 18.2 developer beta 2 (public beta 1).
+释放您设备的全部潜力！适用于所有版本的iOS 16.0-18.2 Beta 2（Public Beta 1）。
 
-This will not work on iOS 18.2 beta 2 or newer. Please do not make issues about this, it will not be fixed. You will have to use the [pc version of Nugget](https://github.com/leminlimez/Nugget) unless a fix comes in the future.
+这在iOS 18.2 Beta 2或更高版本上不起作用。请不要对此提出问题，它不会被修复。你必须使用 [PC版的Nugget](https://github.com/leminlimez/Nugget) 除非将来有解决办法
 
-A `.mobiledevicepairing` file and wireguard are required in order to use this. Read the [sections](#getting-your-mobiledevicepairing-file) below to see how to get those.
+要使用它，需要一个 `.mobiledevicepairing` 文件和WireGuard，阅读下面的[部分](#getting-your-mobiledevicepairing-file) 了解如何获取这些文件
 
-If you are having issues with minimuxer, see the [Solving Minimuxer Issues](#solving-minimuxer-issues) thread.
+如果您在使用minimuxer时遇到问题，请参考 [解决Minimuxer问题](#solving-minimuxer-issues)
 
-This uses the sparserestore exploit to write to files outside of the intended restore location, like mobilegestalt.
+这使用Sparserestore漏洞来写入预期还原位置之外的文件，如mobilegestalt
 
-Note: I am not responsible if your device bootloops, use this software with caution. Please back up your data before using!
+注意：如果您的设备出现启动循环，我概不负责，请谨慎使用本软件。使用前请备份数据！
 
-## Getting Your mobiledevicepairing File
-To get the pairing file, use the following steps:
-1. Download `jitterbugpair` for your system from here: <https://github.com/osy/Jitterbug/releases/latest>
+## 获取您的移动设备配对文件
+要获取配对文件，请执行以下步骤：
+1. 下载 `jitterbugpair` for your system from here: <https://github.com/osy/Jitterbug/releases/latest>
     - **Note:** On mac or linux, you may have to run the terminal command `chmod +x ./jitterbugpair` in the same directory.
 2. Run the program by either double clicking it or using terminal/powershell
 3. Share the `.mobiledevicepairing` file to your iOS device
-4. Open the app and select the pairing file
+4. Open the app 和 select the pairing file
 
-You should only have to do this once unless you lose the file and delete the app's data.
+除非你丢失了文件并删除了应用程序的数据，否则你应该只做一次
 
-## Setting Up WireGuard
-1. Download [WireGuard](<https://apps.apple.com/us/app/wireguard/id1441195209>) on the iOS App Store.
-2. Download [SideStore's config file](https://github.com/sidestore/sidestore/releases/download/0.1.1/sidestore.conf) on your iOS device
-3. Share the config file to WireGuard using the share menu
-4. Enable it and run Nugget
+## 设置WireGuard
+1. 下载 [WireGuard](<https://apps.apple.com/us/app/wireguard/id1441195209>) on the iOS App Store.
+2. 下载 [SideStore's config file](https://github.com/sidestore/sidestore/releases/download/0.1.1/sidestore.conf) on your iOS device
+3. 使用分享菜单将配置文件导入到WireGuard
+4. 启用它并运行Nugget
 
-## Solving Minimuxer Issues
-If you have used Cowabunga Lite before, you may experience issues with minimuxer. This is due to how it skipped the setup process.
-These steps should solve the problem, however it is not an end-all be-all solution.
-1. Download [Nugget Python](https://github.com/leminlimez/Nugget) and follow the steps in the readme to install python and the requirements
-2. Connect your device and (in terminal) type `python3 fix-minimuxer.py` (or `python fix-minimuxer.py` if it doesn't work)
+## 解决Minimuxer问题
+如果您以前使用过Cowabunga Lite，您可能会遇到minimuxer的问题。这是由于它跳过了设置进程
+这些步骤应该能解决问题，但这并不是万能
+1. 下载 [Nugget Python](https://github.com/leminlimez/Nugget) 并按照描述中的步骤安装Python和要求
+2. Connect your device 和 (in terminal) type `python3 fix-minimuxer.py` (or `python fix-minimuxer.py` if it doesn't work)
 
-Your device should reboot. After it reboots, try Nugget mobile now. If it still doesn't work, follow the steps below:
+您的设备应该重新启动。重启后，立即尝试Nugget手机。如果仍然不起作用，请按照以下步骤操作：
 
 3. After your device reboots, go to `[Settings] -> General -> Transfer or Reset iPhone`
 4. Tap `Reset` and then `Reset Location & Privacy`
@@ -44,7 +44,7 @@ Your device should reboot. After it reboots, try Nugget mobile now. If it still 
 If the steps above don't work for you, try using `Cowabunga Lite` and clicking the `Deep Clean` button, then try the steps again.
 If not even that works, the only solution I know is to wipe the device (not ideal). I would recommend using [Nugget Python](https://github.com/leminlimez/Nugget) instead in this case.
 
-## Credits
+## 致谢
 - [JJTech](https://github.com/JJTech0130) for Sparserestore/[TrollRestore](https://github.com/JJTech0130/TrollRestore)
 - khanhduytran for [Sparsebox](https://github.com/khanhduytran0/SparseBox)
 - [pymobiledevice3](https://github.com/doronz88/pymobiledevice3)
