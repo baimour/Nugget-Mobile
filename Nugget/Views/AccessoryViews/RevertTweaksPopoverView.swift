@@ -27,7 +27,7 @@ struct RevertTweaksPopoverView: View {
                 Section {
                     ForEach($tweakOptions) { option in
                         Toggle(isOn: option.enabled) {
-                            Text("Revert \(option.page.wrappedValue.rawValue)")
+                            Text("还原\(option.page.wrappedValue.rawValue)")
                         }
                         .toggleStyle(.switch)
                         .onChange(of: option.enabled.wrappedValue) { nv in
@@ -39,16 +39,16 @@ struct RevertTweaksPopoverView: View {
                         }
                     }
                 }
-                .navigationTitle("Select Tweaks")
+                .navigationTitle("选择功能")
                 Section {
                     // Apply button
-                    Button("Remove Tweaks") {
+                    Button("移除功能") {
                         dismiss()
                         revertFunction(true)
                     }
                     .buttonStyle(TintedButton(color: .red, fullwidth: true))
                     // Cancel button
-                    Button("Cancel") {
+                    Button("取消") {
                         dismiss()
                     }
                     .buttonStyle(TintedButton(color: .blue, fullwidth: true))
