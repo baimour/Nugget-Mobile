@@ -40,7 +40,7 @@ struct LogView: View {
                     }
                     
                     DispatchQueue.global(qos: .background).async {
-                        print("APPLYING")
+                        print("正在应用...")
                         if ApplyHandler.shared.trollstore {
                             // apply with trollstore
                             var succeeded: Bool = false
@@ -51,9 +51,9 @@ struct LogView: View {
                             }
                             if succeeded {
                                 // respring device
-                                UIApplication.shared.alert(title: "Success!", body: "Please respring your device to apply changes.")
+                                UIApplication.shared.alert(title: "成功！", body: "请注销设备使功能生效")
                             } else {
-                                UIApplication.shared.alert(body: "Please read logs for full error info")
+                                UIApplication.shared.alert(body: "请阅读日志了解完整的错误信息")
                             }
                             return
                         }
@@ -72,24 +72,24 @@ struct LogView: View {
                         } else {
                             succeeded = ApplyHandler.shared.apply(udid: udid, skipSetup: skipSetup, trollstore: false)
                         }
-                        if succeeded && (log.contains("Restore Successful") || log.contains("crash_on_purpose")) {
+                        if succeeded && (log.contains("还原文件成功") || log.contains("crash_on_purpose")) {
                             if autoReboot {
-                                print("Rebooting device...")
+                                print("正在重启设备...")
                                 MobileDevice.rebootDevice(udid: udid)
                             } else {
-                                UIApplication.shared.alert(title: "Success!", body: "Please restart your device to see changes.")
+                                UIApplication.shared.alert(title: "成功！", body: "请重启设备以便功能生效")
                             }
                         /* Error Dialogs Below */
-                        } else if log.contains("Find My") {
-                            UIApplication.shared.alert(body: "Find My must be disabled in order to use this tool.\n\nDisable Find My from Settings (Settings -> [Your Name] -> Find My) and then try again.")
-                        } else if log.contains("Could not receive from mobilebackup2") {
-                            UIApplication.shared.alert(body: "Failed to receive requests from mobilebackup2. Please restart the app and try again.")
+                        } else if log.contains("查找我的设备") {
+                            UIApplication.shared.alert(body: "必须禁用'查找我的设备'才能使用此工具\n\n在设置中禁用 (设置 -> [iCloud] -> 查找我的设备) 然后重试")
+                        } else if log.contains("无法从mobilebackup2接收") {
+                            UIApplication.shared.alert(body: "无法接收来自mobilebackup2的请求，请重启应用程序并重试")
                         }
                     }
                 }
             }
         }
-        .navigationTitle("Log output")
+        .navigationTitle("日志输出")
     }
     
     init(resetting: Bool, autoReboot: Bool, skipSetup: Bool) {
