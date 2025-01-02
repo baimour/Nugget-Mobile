@@ -29,7 +29,7 @@ struct HomeView: View {
                 Section {
                     
                 } header: {
-                    Label("Version \(Bundle.main.releaseVersionNumber ?? "UNKNOWN") (\(Int(buildNumber) != 0 ? "beta \(buildNumber)" : NSLocalizedString("Release", comment:"")))", systemImage: "info")
+                    Label("版本: \(Bundle.main.releaseVersionNumber ?? "UNKNOWN") (\(Int(buildNumber) != 0 ? "beta \(buildNumber)" : NSLocalizedString("Release", comment:"")))", systemImage: "info")
                 }
                 .listStyle(InsetGroupedListStyle())
                 
@@ -38,12 +38,12 @@ struct HomeView: View {
                     VStack {
                         // apply all tweaks button
                         HStack {
-                            Button("Apply Tweaks") {
+                            Button("应用已选功能") {
                                 applyChanges(reverting: false)
                             }
                             .buttonStyle(TintedButton(color: .blue, fullwidth: true))
                             Button {
-                                UIApplication.shared.alert(title: NSLocalizedString("Info", comment: "info header"), body: NSLocalizedString("Applies all selected tweaks.", comment: "apply tweaks info"))
+                                UIApplication.shared.alert(title: NSLocalizedString("信息", comment: "info header"), body: NSLocalizedString("应用已选功能", comment: "apply tweaks info"))
                             } label: {
                                 Image(systemName: "info")
                             }
@@ -51,7 +51,7 @@ struct HomeView: View {
                         }
                         // remove all tweaks button
                         HStack {
-                            Button("Remove All Tweaks") {
+                            Button("移除所有功能") {
                                 showRevertPage.toggle()
                             }
                             .buttonStyle(TintedButton(color: .red, fullwidth: true))
@@ -59,7 +59,7 @@ struct HomeView: View {
                                 RevertTweaksPopoverView(revertFunction: applyChanges(reverting:))
                             })
                             Button {
-                                UIApplication.shared.alert(title: NSLocalizedString("Info", comment: "info header"), body: NSLocalizedString("Removes and reverts all tweaks, including mobilegestalt.", comment: "remove tweaks info"))
+                                UIApplication.shared.alert(title: NSLocalizedString("信息", comment: "info header"), body: NSLocalizedString("删除并恢复默认\n\n包括MobileGestalt文件", comment: "remove tweaks info"))
                             } label: {
                                 Image(systemName: "info")
                             }
@@ -69,19 +69,19 @@ struct HomeView: View {
                         if !ApplyHandler.shared.trollstore {
                                 if pairingFile == nil {
                                 HStack {
-                                    Button("Select Pairing File") {
+                                    Button("选择配对文件") {
                                         showPairingFileImporter.toggle()
                                     }
                                     .buttonStyle(TintedButton(color: .green, fullwidth: true))
                                     Button {
-                                        UIApplication.shared.helpAlert(title: NSLocalizedString("Info", comment: "info header"), body: NSLocalizedString("Select a pairing file in order to restore the device. One can be gotten from apps like AltStore or SideStore. Tap \"Help\" for more info.", comment: "pairing file selector info"), link: "https://docs.sidestore.io/docs/getting-started/pairing-file")
+                                        UIApplication.shared.helpAlert(title: NSLocalizedString("Info", comment: "info header"), body: NSLocalizedString("选择配对文件才能使用该工具，可以从AltStore或SideStore等应用程序获取。点击\"帮助\"了解更多信息", comment: "pairing file selector info"), link: "https://docs.sidestore.io/docs/getting-started/pairing-file")
                                     } label: {
                                         Image(systemName: "info")
                                     }
                                     .buttonStyle(TintedButton(material: .systemMaterial, fullwidth: false))
                                 }
                             } else {
-                                Button("Reset pairing file") {
+                                Button("重置配对文件") {
                                     pairingFile = nil
                                 }
                                 .buttonStyle(TintedButton(color: .green, fullwidth: true))
@@ -92,18 +92,18 @@ struct HomeView: View {
                     // auto reboot option
                     HStack {
                         Toggle(isOn: $autoReboot) {
-                            Text("Auto reboot after apply")
+                            Text("应用后自动重启")
                                 .minimumScaleFactor(0.5)
                         }
                     }
                     // skip setup
                     Toggle(isOn: $skipSetup) {
                         HStack {
-                            Text("Traditional Skip Setup")
+                            Text("传统跳过设置")
                                 .minimumScaleFactor(0.5)
                             Spacer()
                             Button {
-                                UIApplication.shared.alert(title: NSLocalizedString("Info", comment: "info header"), body: NSLocalizedString("Applies Cowabunga Lite's Skip Setup method to skip the setup for non-exploit files.\n\nThis may cause issues for some people, so turn it off if you use configuration profiles.\n\nThis will not be applied if you are only applying exploit files, as it will use the SparseRestore method to skip setup.", comment: "skip setup info"))
+                                UIApplication.shared.alert(title: NSLocalizedString("信息", comment: "info header"), body: NSLocalizedString("应用Cowabunga Lite的跳过设置方法跳过非漏洞利用文件的设置\n\n这可能会对某些人造成问题，所以如果你使用配置文件，请将其关闭\n\n如果您只应用漏洞利用文件，则不会应用此方法，因为它将使用SparseRestore方法来跳过设置", comment: "skip setup info"))
                             } label: {
                                 Image(systemName: "info.circle")
                             }
@@ -111,7 +111,7 @@ struct HomeView: View {
                         }
                     }
                 } header: {
-                    Label("Tweak Options", systemImage: "hammer")
+                    Label("功能选项", systemImage: "hammer")
                 }
                 .listStyle(InsetGroupedListStyle())
                 .listRowInsets(EdgeInsets())
@@ -131,7 +131,7 @@ struct HomeView: View {
                                     showErrorAlert.toggle()
                                 }
                             })
-                            .alert("Error", isPresented: $showErrorAlert) {
+                            .alert("发生错误", isPresented: $showErrorAlert) {
                                 Button("OK") {}
                             } message: {
                                 Text(lastError ?? "???")
@@ -148,7 +148,7 @@ struct HomeView: View {
                     LinkCell(imageName: "app.gift", url: "https://sidestore.io/", title: "SideStore", contribution: "em_proxy and minimuxer", systemImage: true, circle: true)
                     LinkCell(imageName: "cable.connector", url: "https://libimobiledevice.org", title: "libimobiledevice", contribution: "Restore Library", systemImage: true, circle: true)
                 } header: {
-                    Label("Credits", systemImage: "wrench.and.screwdriver")
+                    Label("致谢", systemImage: "wrench.and.screwdriver")
                 }
             }
             .onOpenURL(perform: { url in
@@ -180,7 +180,7 @@ struct HomeView: View {
                     LogView(resetting: true, autoReboot: autoReboot, skipSetup: skipSetup)
                 }
             }
-            .alert("Error", isPresented: $showErrorAlert) {
+            .alert("发生错误", isPresented: $showErrorAlert) {
                 Button("OK") {}
             } message: {
                 Text(lastError ?? "???")
@@ -199,20 +199,20 @@ struct HomeView: View {
         if ApplyHandler.shared.trollstore || ready() {
             if !reverting && ApplyHandler.shared.allEnabledTweaks().isEmpty {
                 // if there are no enabled tweaks then tell the user
-                UIApplication.shared.alert(body: "You do not have any tweaks enabled! Go to the tools page to select some.")
+                UIApplication.shared.alert(body: "您没有启用任何功能！请先转到工具页面选择")
             } else if ApplyHandler.shared.isExploitOnly() {
                 path.append(reverting ? "RevertChanges" : "ApplyChanges")
             } else if !ApplyHandler.shared.trollstore {
                 // if applying non-exploit files, warn about setup
-                UIApplication.shared.confirmAlert(title: "Warning!", body: "You are applying non-exploit related files. This will make the setup screen appear. Click Cancel if you do not wish to proceed.\n\nWhen setting up, you MUST click \"Do not transfer apps & data\".\n\nIf you see a screen that says \"iPhone Partially Set Up\", DO NOT tap the big blue button. You must click \"Continue with Partial Setup\".", onOK: {
+                UIApplication.shared.confirmAlert(title: "警告！", body: "您正在应用与漏洞利用无关的文件，这将会显示设置界面！\n\n在设置时您必须点击\"不传输应用程序和数据\"\n\n如果您看到屏幕上显示\"iPhone部分设置已完成\"，请不要点击蓝色按钮。您必须点击继续部分设置", onOK: {
                     path.append(reverting ? "RevertChanges" : "ApplyChanges")
                 }, noCancel: false)
             }
         } else if pairingFile == nil {
-            lastError = "Please select your pairing file to continue."
+            lastError = "请选择配对文件以继续"
             showErrorAlert.toggle()
         } else {
-            lastError = "minimuxer is not ready. Ensure you have WiFi and WireGuard VPN set up."
+            lastError = "minimuxer尚未就绪，请确保您已连接WiFi和WireGuard VPN"
             showErrorAlert.toggle()
         }
     }
