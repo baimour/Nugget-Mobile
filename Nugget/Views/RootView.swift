@@ -12,11 +12,11 @@ struct RootView: View {
         TabView {
             HomeView()
                 .tabItem {
-                    Label("Home", systemImage: "house")
+                    Label("主页", systemImage: "house")
                 }
             ToolsView()
                 .tabItem {
-                    Label("Tools", systemImage: "wrench.and.screwdriver.fill")
+                    Label("工具", systemImage: "wrench.and.screwdriver.fill")
                 }
         }
     }
