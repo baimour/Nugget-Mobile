@@ -20,7 +20,7 @@ struct ModifyTweakViewModifier: ViewModifier {
                     applyHandler.setTweakEnabled(pageKey, isEnabled: !applyHandler.isTweakEnabled(pageKey))
                 }) {
                     HStack {
-                        Text("Modify")
+                        Text("管理")
                         Image(systemName: applyHandler.isTweakEnabled(pageKey) ? "checkmark.seal" : "xmark.seal")
                             .foregroundStyle(Color(applyHandler.isTweakEnabled(pageKey) ? .green : .red))
                     }
