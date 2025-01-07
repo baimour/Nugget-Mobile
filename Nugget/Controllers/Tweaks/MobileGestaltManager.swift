@@ -157,11 +157,11 @@ class MobileGestaltManager {
     }
     func getRdarFixTitle(mode: Int) -> String {
         if mode == 1 || mode == 3 {
-            return "Fix rdar"
+            return "修复状态栏"
         } else if mode == 2 {
-            return "DI status bar fix"
+            return "DI状态栏修复"
         }
-        return "hide"
+        return "隐藏"
     }
     
     func getRdarFixTitle() -> String {
