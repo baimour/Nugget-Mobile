@@ -32,14 +32,14 @@ class BasicPlistTweaksManager: ObservableObject {
         .init(page: .SpringBoard, tweaks: [
             PlistTweak(key: "LockScreenFootnote", title: "锁屏解锁文字", fileLocation: .footnote, tweakType: .text, placeholder: "解锁文字"),
             PlistTweak(key: "SBDontLockAfterCrash", title: "禁用注销后锁屏", fileLocation: .springboard, tweakType: .toggle),
-            PlistTweak(key: "SBDontDimOrLockOnAC", title: "Disable Screen Dimming While Charging", fileLocation: .springboard, tweakType: .toggle),
+            PlistTweak(key: "SBDontDimOrLockOnAC", title: "禁用充电时屏幕调光", fileLocation: .springboard, tweakType: .toggle),
             PlistTweak(key: "SBHideLowPowerAlerts", title: "禁用低电量弹窗", fileLocation: .springboard, tweakType: .toggle),
             PlistTweak(key: "SBNeverBreadcrumb", title: "禁用面包屑", fileLocation: .springboard, tweakType: .toggle),
             PlistTweak(key: "SBShowSupervisionTextOnLockScreen", title: "在锁屏上显示监管文字", fileLocation: .springboard, tweakType: .toggle),
             PlistTweak(key: "CCSPresentationGesture", title: "禁用控制中心演示手势", fileLocation: .springboard, tweakType: .toggle, invertValue: true),
             PlistTweak(key: "SBExtendedDisplayOverrideSupportForAirPlayAndDontFileRadars", title: "为舞台管理器启用播放器支持", fileLocation: .springboard, tweakType: .toggle),
-//            PlistTweak(key: "WiFiManagerLoggingEnabled", title: "Show WiFi Debugger", fileLocation: .wifiDebug, tweakType: .toggle),
-//            PlistTweak(key: "DiscoverableMode", title: "Permanently Allow Receiving AirDrop from Everyone", fileLocation: .airdrop, tweakType: .toggle)
+            PlistTweak(key: "WiFiManagerLoggingEnabled", title: "显示WiFi调试", fileLocation: .wifiDebug, tweakType: .toggle),
+            PlistTweak(key: "DiscoverableMode", title: "允许所有人隔空投送", fileLocation: .airdrop, tweakType: .toggle)
         ]),
         /* Internal Options Manager */
         .init(page: .Internal, tweaks: [
