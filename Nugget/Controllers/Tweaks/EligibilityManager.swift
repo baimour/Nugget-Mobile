@@ -35,7 +35,7 @@ class EligibilityManager: ObservableObject {
             if var plist = String(data: data, encoding: .utf8) {
                 // apply the region code
                 if let regionCode = Locale.current.regionCode {
-                    print("Applying for region code: \(regionCode)")
+                    print("正在修改地区代码: \(regionCode)")
                     plist = plist.replacingOccurrences(of: "US", with: regionCode)
                 }
                 return plist.data(using: .utf8) ?? Data()
