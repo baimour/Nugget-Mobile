@@ -29,7 +29,7 @@ struct HomeView: View {
                 Section {
                     
                 } header: {
-                    Label("版本: \(Bundle.main.releaseVersionNumber ?? "UNKNOWN") (\(Int(buildNumber) != 0 ? "beta \(buildNumber)" : NSLocalizedString("Release", comment:"")))", systemImage: "info")
+                    Label("版本: \(Bundle.main.releaseVersionNumber ?? "未知") (\(Int(buildNumber) != 0 ? "Beta \(buildNumber)" : NSLocalizedString("Release", comment:"")))", systemImage: "info")
                 }
                 .listStyle(InsetGroupedListStyle())
                 
@@ -74,7 +74,7 @@ struct HomeView: View {
                                     }
                                     .buttonStyle(TintedButton(color: .green, fullwidth: true))
                                     Button {
-                                        UIApplication.shared.helpAlert(title: NSLocalizedString("Info", comment: "info header"), body: NSLocalizedString("选择配对文件才能使用该工具，可以从AltStore或SideStore等应用程序获取。点击\"帮助\"了解更多信息", comment: "pairing file selector info"), link: "https://docs.sidestore.io/docs/getting-started/pairing-file")
+                                        UIApplication.shared.helpAlert(title: NSLocalizedString("信息", comment: "info header"), body: NSLocalizedString("选择配对文件才能使用该工具，可以从AltStore或SideStore等应用程序获取。点击\"帮助\"了解更多信息", comment: "pairing file selector info"), link: "https://docs.sidestore.io/docs/getting-started/pairing-file")
                                     } label: {
                                         Image(systemName: "info")
                                     }
