@@ -26,15 +26,15 @@ struct ToolsView: View {
     }
     
     @State var tools: [ToolCategory] = [
-        .init(title: "Sparserestore Tweaks", pages: [
-            .init(page: .MobileGestalt, view: AnyView(GestaltView()), title: NSLocalizedString("Mobile Gestalt", comment: "Title of tool"), imageName: "platter.filled.top.and.arrow.up.iphone"),
+        .init(title: "功能修改选项", pages: [
+            .init(page: .MobileGestalt, view: AnyView(GestaltView()), title: NSLocalizedString("系统功能", comment: "Title of tool"), imageName: "platter.filled.top.and.arrow.up.iphone"),
             .init(page: .FeatureFlags, view: AnyView(FeatureFlagsView()), title: NSLocalizedString("Feature Flags", comment: "Title of tool"), imageName: "flag", minVersion: Version(string: "18.0")),
             .init(page: .Eligibility, view: AnyView(EligibilityView()), title: NSLocalizedString("Eligibility", comment: "Title of tool"), imageName: "mappin", minVersion: Version(string: "18.1")/*Version(string: "17.4")*/),
-            .init(page: .SpringBoard, view: AnyView(SpringboardTweaksView()), title: NSLocalizedString("SpringBoard", comment: "Title of tool"), imageName: "app.badge"),
-            .init(page: .Internal, view: AnyView(InternalOptionsView()), title: NSLocalizedString("Internal Options", comment: "Title of tool"), imageName: "internaldrive")
+            .init(page: .SpringBoard, view: AnyView(SpringboardTweaksView()), title: NSLocalizedString("桌面功能", comment: "Title of tool"), imageName: "app.badge"),
+            .init(page: .Internal, view: AnyView(InternalOptionsView()), title: NSLocalizedString("内部功能", comment: "Title of tool"), imageName: "internaldrive")
         ]),
-        .init(title: "Domain Restore Tweaks (requires Skip Setup)", pages: [
-            .init(page: .StatusBar, view: AnyView(StatusBarView()), title: NSLocalizedString("Status Bar", comment: "Title of tool"), imageName: "wifi")
+        .init(title: "域还原功能 (需要开启跳过设置)", pages: [
+            .init(page: .StatusBar, view: AnyView(StatusBarView()), title: NSLocalizedString("状态栏", comment: "Title of tool"), imageName: "wifi")
         ])
         
     ]
