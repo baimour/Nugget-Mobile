@@ -158,10 +158,10 @@ class RestoreManager {
                 "-n", "restore", "--no-reboot", "--system",
                 documentsDirectory.path(percentEncoded: false)
             ]
-            print("Executing args: \(restoreArgs)")
+            print("正在执行参数: \(restoreArgs)")
             var argv = restoreArgs.map{ strdup($0) }
             let result = idevicebackup2_main(Int32(restoreArgs.count), &argv)
-            print("idevicebackup2 exited with code \(result)")
+            print("idevicebackup2已退出，代码: \(result)")
         } catch {
             print(error.localizedDescription)
             return
