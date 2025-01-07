@@ -166,7 +166,7 @@ class ApplyHandler: ObservableObject {
                         return false
                     }
                 } else {
-                    print("Failed to convert build number to String")
+                    print("无法将构建版本号转换为字符串")
                 }
             } else {
                 print("sysctlbyname failed with error: \(String(cString: strerror(errno)))")
@@ -195,7 +195,7 @@ class ApplyHandler: ObservableObject {
                         return false
                     }
                 } else {
-                    print("Failed to convert build number to String")
+                    print("无法将构建版本号转换为字符串")
                 }
             } else {
                 print("sysctlbyname failed with error: \(String(cString: strerror(errno)))")
@@ -220,7 +220,7 @@ class ApplyHandler: ObservableObject {
     func apply(udid: String, skipSetup: Bool, trollstore: Bool) -> Bool {
         var filesToRestore: [FileToRestore] = []
         do {
-            print("Tweak pages being applied: \(self.enabledTweaks)")
+            print("正在应用功能页面: \(self.enabledTweaks)")
             for tweak in self.enabledTweaks {
                 try getTweakPageData(tweak, resetting: false, files: &filesToRestore)
             }
@@ -247,7 +247,7 @@ class ApplyHandler: ObservableObject {
                 }
                 return true
             } else {
-                print("No files to restore!")
+                print("没有要还原的文件！")
                 return false
             }
         } catch {
@@ -259,7 +259,7 @@ class ApplyHandler: ObservableObject {
     func reset(udid: String, trollstore: Bool) -> Bool {
         var filesToRestore: [FileToRestore] = []
         do {
-            print("Tweak pages being reset: \(self.removingTweaks)")
+            print("功能调整页面正在重置: \(self.removingTweaks)")
             for tweak in self.removingTweaks {
                 try self.getTweakPageData(tweak, resetting: true, files: &filesToRestore)
             }
