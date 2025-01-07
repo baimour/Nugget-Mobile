@@ -97,13 +97,13 @@ struct StatusBarView: View {
             Section {
                 
             } footer: {
-                Text("Betas, use with caution. Have a backup.")
+                Text("测试功能，请谨慎使用。做好备份")
             }
             Section {
-                Picker(selection: $radioPrimarySelection, label: Text("Visibility")) {
-                    Text("Default").tag(1)
-                    Text("Force Show").tag(2)
-                    Text("Force Hide").tag(3)
+                Picker(selection: $radioPrimarySelection, label: Text("显示隐藏")) {
+                    Text("默认").tag(1)
+                    Text("强制显示").tag(2)
+                    Text("强制隐藏").tag(3)
                 }
                 .pickerStyle(.menu)
                 .onChange(of: radioPrimarySelection) { new in
@@ -148,7 +148,7 @@ struct StatusBarView: View {
                 //                                })
                 //                            }
                 
-                Toggle("Change Primary Carrier Text", isOn: $carrierTextEnabled).onChange(of: carrierTextEnabled, perform: { nv in
+                Toggle("更改主卡运营商名称", isOn: $carrierTextEnabled).onChange(of: carrierTextEnabled, perform: { nv in
                     if nv {
                         StatusManager.sharedInstance().setCarrier(carrierText)
                     } else {
@@ -157,7 +157,7 @@ struct StatusBarView: View {
                 }).onAppear(perform: {
                     carrierTextEnabled = StatusManager.sharedInstance().isCarrierOverridden()
                 })
-                TextField("Primary Carrier Text", text: $carrierText).onChange(of: carrierText, perform: { nv in
+                TextField("主卡运营商名称", text: $carrierText).onChange(of: carrierText, perform: { nv in
                     // This is important.
                     // Make sure the UTF-8 representation of the string does not exceed 100
                     // Otherwise the struct will overflow
@@ -172,7 +172,7 @@ struct StatusBarView: View {
                 }).onAppear(perform: {
                     carrierText = StatusManager.sharedInstance().getCarrierOverride()
                 })
-                Toggle("Change Primary Service Badge Text", isOn: $primaryServiceBadgeTextEnabled).onChange(of: primaryServiceBadgeTextEnabled, perform: { nv in
+                Toggle("更改主卡服务徽章文字", isOn: $primaryServiceBadgeTextEnabled).onChange(of: primaryServiceBadgeTextEnabled, perform: { nv in
                     if nv {
                         StatusManager.sharedInstance().setPrimaryServiceBadge(primaryServiceBadgeText)
                     } else {
@@ -181,7 +181,7 @@ struct StatusBarView: View {
                 }).onAppear(perform: {
                     primaryServiceBadgeTextEnabled = StatusManager.sharedInstance().isPrimaryServiceBadgeOverridden()
                 })
-                TextField("Primary Service Badge Text", text: $primaryServiceBadgeText).onChange(of: primaryServiceBadgeText, perform: { nv in
+                TextField("主卡服务徽章文字", text: $primaryServiceBadgeText).onChange(of: primaryServiceBadgeText, perform: { nv in
                     // This is important.
                     // Make sure the UTF-8 representation of the string does not exceed 100
                     // Otherwise the struct will overflow
@@ -197,7 +197,7 @@ struct StatusBarView: View {
                     primaryServiceBadgeText = StatusManager.sharedInstance().getPrimaryServiceBadgeOverride()
                 })
                 
-                Toggle("Change Data Network Type", isOn: $dataNetworkTypeEnabled).onChange(of: dataNetworkTypeEnabled, perform: { nv in
+                Toggle("更改数据网络类型", isOn: $dataNetworkTypeEnabled).onChange(of: dataNetworkTypeEnabled, perform: { nv in
                     if nv {
                         StatusManager.sharedInstance().setDataNetworkType(Int32(dataNetworkType))
                     } else {
@@ -207,7 +207,7 @@ struct StatusBarView: View {
                     dataNetworkTypeEnabled = StatusManager.sharedInstance().isDataNetworkTypeOverridden()
                 })
                 HStack {
-                    Text("Data Network Type")
+                    Text("数据网络类型")
                     Spacer()
                     
                     Menu {
@@ -230,14 +230,14 @@ struct StatusBarView: View {
                     dataNetworkType = Int(StatusManager.sharedInstance().getDataNetworkTypeOverride())
                 })
             } header: {
-                Text("Primary Carrier")
+                Text("主卡运营商")
             }
             
             Section {
                 Picker(selection: $radioSecondarySelection, label: Text("Visibility")) {
-                    Text("Default").tag(1)
-                    Text("Force Show").tag(2)
-                    Text("Force Hide").tag(3)
+                    Text("默认").tag(1)
+                    Text("强制显示").tag(2)
+                    Text("强制隐藏").tag(3)
                 }
                 .pickerStyle(.menu)
                 .onChange(of: radioSecondarySelection) { new in
@@ -282,7 +282,7 @@ struct StatusBarView: View {
                 //                                })
                 //                            }
                 
-                Toggle("Change Secondary Carrier Text", isOn: $secondaryCarrierTextEnabled).onChange(of: secondaryCarrierTextEnabled, perform: { nv in
+                Toggle("更改副卡运营商名称", isOn: $secondaryCarrierTextEnabled).onChange(of: secondaryCarrierTextEnabled, perform: { nv in
                     if nv {
                         StatusManager.sharedInstance().setSecondaryCarrier(secondaryCarrierText)
                     } else {
@@ -291,7 +291,7 @@ struct StatusBarView: View {
                 }).onAppear(perform: {
                     secondaryCarrierTextEnabled = StatusManager.sharedInstance().isSecondaryCarrierOverridden()
                 })
-                TextField("Secondary Carrier Text", text: $secondaryCarrierText).onChange(of: secondaryCarrierText, perform: { nv in
+                TextField("副卡运营商名称", text: $secondaryCarrierText).onChange(of: secondaryCarrierText, perform: { nv in
                     // This is important.
                     // Make sure the UTF-8 representation of the string does not exceed 100
                     // Otherwise the struct will overflow
@@ -306,7 +306,7 @@ struct StatusBarView: View {
                 }).onAppear(perform: {
                     secondaryCarrierText = StatusManager.sharedInstance().getSecondaryCarrierOverride()
                 })
-                Toggle("Change Secondary Service Badge Text", isOn: $secondaryServiceBadgeTextEnabled).onChange(of: secondaryServiceBadgeTextEnabled, perform: { nv in
+                Toggle("更改副卡服务徽章文字", isOn: $secondaryServiceBadgeTextEnabled).onChange(of: secondaryServiceBadgeTextEnabled, perform: { nv in
                     if nv {
                         StatusManager.sharedInstance().setSecondaryServiceBadge(secondaryServiceBadgeText)
                     } else {
@@ -315,7 +315,7 @@ struct StatusBarView: View {
                 }).onAppear(perform: {
                     secondaryServiceBadgeTextEnabled = StatusManager.sharedInstance().isSecondaryServiceBadgeOverridden()
                 })
-                TextField("Secondary Service Badge Text", text: $secondaryServiceBadgeText).onChange(of: secondaryServiceBadgeText, perform: { nv in
+                TextField("副卡服务徽章文字", text: $secondaryServiceBadgeText).onChange(of: secondaryServiceBadgeText, perform: { nv in
                     // This is important.
                     // Make sure the UTF-8 representation of the string does not exceed 100
                     // Otherwise the struct will overflow
@@ -331,7 +331,7 @@ struct StatusBarView: View {
                     secondaryServiceBadgeText = StatusManager.sharedInstance().getSecondaryServiceBadgeOverride()
                 })
                 
-                Toggle("Change Secondary Data Network Type", isOn: $secondaryDataNetworkTypeEnabled).onChange(of: secondaryDataNetworkTypeEnabled, perform: { nv in
+                Toggle("更改副卡数据网络类型", isOn: $secondaryDataNetworkTypeEnabled).onChange(of: secondaryDataNetworkTypeEnabled, perform: { nv in
                     if nv {
                         StatusManager.sharedInstance().setSecondaryDataNetworkType(Int32(secondaryDataNetworkType))
                     } else {
@@ -342,7 +342,7 @@ struct StatusBarView: View {
                 })
                 
                 HStack {
-                    Text("Secondary Data Network Type")
+                    Text("副卡数据网络类型")
                     Spacer()
                     
                     Menu {
@@ -365,10 +365,10 @@ struct StatusBarView: View {
                     secondaryDataNetworkType = Int(StatusManager.sharedInstance().getSecondaryDataNetworkTypeOverride())
                 })
             } header: {
-                Text("Secondary Carrier")
+                Text("副卡运营商")
             }
             Section {
-                Toggle("Change Breadcrumb Text", isOn: $crumbTextEnabled).onChange(of: crumbTextEnabled, perform: { nv in
+                Toggle("更改面包屑文字", isOn: $crumbTextEnabled).onChange(of: crumbTextEnabled, perform: { nv in
                     if nv {
                         StatusManager.sharedInstance().setCrumb(crumbText)
                     } else {
@@ -377,7 +377,7 @@ struct StatusBarView: View {
                 }).onAppear(perform: {
                     crumbTextEnabled = StatusManager.sharedInstance().isCrumbOverridden()
                 })
-                TextField("Breadcrumb Text", text: $crumbText).onChange(of: crumbText, perform: { nv in
+                TextField("面包屑文字", text: $crumbText).onChange(of: crumbText, perform: { nv in
                     // This is important.
                     // Make sure the UTF-8 representation of the string does not exceed 256
                     // Otherwise the struct will overflow
@@ -392,7 +392,7 @@ struct StatusBarView: View {
                 }).onAppear(perform: {
                     crumbText = StatusManager.sharedInstance().getCrumbOverride()
                 })
-                Toggle("Change Battery Detail Text", isOn: $batteryDetailEnabled).onChange(of: batteryDetailEnabled, perform: { nv in
+                Toggle("更改电池详细信息文字", isOn: $batteryDetailEnabled).onChange(of: batteryDetailEnabled, perform: { nv in
                     if nv {
                         StatusManager.sharedInstance().setBatteryDetail(batteryDetailText)
                     } else {
@@ -401,7 +401,7 @@ struct StatusBarView: View {
                 }).onAppear(perform: {
                     batteryDetailEnabled = StatusManager.sharedInstance().isBatteryDetailOverridden()
                 })
-                TextField("Battery Detail Text", text: $batteryDetailText).onChange(of: batteryDetailText, perform: { nv in
+                TextField("电池详细信息文字", text: $batteryDetailText).onChange(of: batteryDetailText, perform: { nv in
                     // This is important.
                     // Make sure the UTF-8 representation of the string does not exceed 150
                     // Otherwise the struct will overflow
@@ -417,7 +417,7 @@ struct StatusBarView: View {
                     batteryDetailText = StatusManager.sharedInstance().getBatteryDetailOverride()
                 })
                 if UIDevice.current.userInterfaceIdiom == .pad {
-                    Toggle("Change Status Bar Date Text", isOn: $dateTextEnabled).onChange(of: dateTextEnabled, perform: { nv in
+                    Toggle("更改状态栏日期文字", isOn: $dateTextEnabled).onChange(of: dateTextEnabled, perform: { nv in
                         if nv {
                             StatusManager.sharedInstance().setDate(dateText)
                         } else {
@@ -426,7 +426,7 @@ struct StatusBarView: View {
                     }).onAppear(perform: {
                         dateTextEnabled = StatusManager.sharedInstance().isDateOverridden()
                     })
-                    TextField("Status Bar Date Text", text: $dateText).onChange(of: dateText, perform: { nv in
+                    TextField("状态栏日期文字", text: $dateText).onChange(of: dateText, perform: { nv in
                         // This is important.
                         // Make sure the UTF-8 representation of the string does not exceed 64
                         // Otherwise the struct will overflow
@@ -442,7 +442,7 @@ struct StatusBarView: View {
                         dateText = StatusManager.sharedInstance().getDateOverride()
                     })
                 }
-                Toggle("Change Status Bar Time Text", isOn: $timeTextEnabled).onChange(of: timeTextEnabled, perform: { nv in
+                Toggle("更改状态栏时间文字", isOn: $timeTextEnabled).onChange(of: timeTextEnabled, perform: { nv in
                     if nv {
                         StatusManager.sharedInstance().setTime(timeText)
                     } else {
@@ -451,7 +451,7 @@ struct StatusBarView: View {
                 }).onAppear(perform: {
                     timeTextEnabled = StatusManager.sharedInstance().isTimeOverridden()
                 })
-                TextField("Status Bar Time Text", text: $timeText).onChange(of: timeText, perform: { nv in
+                TextField("状态栏时间文字", text: $timeText).onChange(of: timeText, perform: { nv in
                     // This is important.
                     // Make sure the UTF-8 representation of the string does not exceed 64
                     // Otherwise the struct will overflow
@@ -467,11 +467,11 @@ struct StatusBarView: View {
                     timeText = StatusManager.sharedInstance().getTimeOverride()
                 })
             } footer: {
-                Text("When set to blank on notched devices, this will display the carrier name.")
+                Text("在全面屏设备上设置为空时，将显示运营商名称")
             }
             
             Section {
-                Toggle("Change Battery Icon Capacity", isOn: $batteryCapacityEnabled).onChange(of: batteryCapacityEnabled, perform: { nv in
+                Toggle("更改电池图标容量", isOn: $batteryCapacityEnabled).onChange(of: batteryCapacityEnabled, perform: { nv in
                     if nv {
                         StatusManager.sharedInstance().setBatteryCapacity(Int32(batteryCapacity))
                     } else {
@@ -494,7 +494,7 @@ struct StatusBarView: View {
                         })
                 }
                 
-                Toggle("Change Wi-Fi Signal Strength Bars", isOn: $wiFiStrengthBarsEnabled).onChange(of: wiFiStrengthBarsEnabled, perform: { nv in
+                Toggle("更改WiFi信号强度条", isOn: $wiFiStrengthBarsEnabled).onChange(of: wiFiStrengthBarsEnabled, perform: { nv in
                     if nv {
                         StatusManager.sharedInstance().setWiFiSignalStrengthBars(Int32(wiFiStrengthBars))
                     } else {
@@ -517,7 +517,7 @@ struct StatusBarView: View {
                         })
                 }
                 
-                Toggle("Change Primary GSM Signal Strength Bars", isOn: $gsmStrengthBarsEnabled).onChange(of: gsmStrengthBarsEnabled, perform: { nv in
+                Toggle("更改主卡信号强度条", isOn: $gsmStrengthBarsEnabled).onChange(of: gsmStrengthBarsEnabled, perform: { nv in
                     if nv {
                         StatusManager.sharedInstance().setGsmSignalStrengthBars(Int32(gsmStrengthBars))
                     } else {
@@ -540,7 +540,7 @@ struct StatusBarView: View {
                         })
                 }
                 
-                Toggle("Change Secondary GSM Signal Strength Bars", isOn: $secondaryGsmStrengthBarsEnabled).onChange(of: secondaryGsmStrengthBarsEnabled, perform: { nv in
+                Toggle("更改副卡信号强度条", isOn: $secondaryGsmStrengthBarsEnabled).onChange(of: secondaryGsmStrengthBarsEnabled, perform: { nv in
                     if nv {
                         StatusManager.sharedInstance().setSecondaryGsmSignalStrengthBars(Int32(secondaryGsmStrengthBars))
                     } else {
@@ -565,12 +565,12 @@ struct StatusBarView: View {
             }
             
             Section {
-                Toggle("Show Numeric Wi-Fi Strength", isOn: $displayingRawWiFiStrength).onChange(of: displayingRawWiFiStrength, perform: { nv in
+                Toggle("显示数字WiFi强度", isOn: $displayingRawWiFiStrength).onChange(of: displayingRawWiFiStrength, perform: { nv in
                     StatusManager.sharedInstance().displayRawWifiSignal(nv)
                 }).onAppear(perform: {
                     displayingRawWiFiStrength = StatusManager.sharedInstance().isDisplayingRawWiFiSignal()
                 })
-                Toggle("Show Numeric Cellular Strength", isOn: $displayingRawGSMStrength).onChange(of: displayingRawGSMStrength, perform: { nv in
+                Toggle("显示数字蜂窝强度", isOn: $displayingRawGSMStrength).onChange(of: displayingRawGSMStrength, perform: { nv in
                     StatusManager.sharedInstance().displayRawGSMSignal(nv)
                 }).onAppear(perform: {
                     displayingRawGSMStrength = StatusManager.sharedInstance().isDisplayingRawGSMSignal()
@@ -578,76 +578,76 @@ struct StatusBarView: View {
             }
             
             Section {
-                Toggle("Hide Focus (i.e. Do Not Disturb)", isOn: $DNDHidden).onChange(of: DNDHidden, perform: { nv in
+                Toggle("隐藏勿扰模式图标", isOn: $DNDHidden).onChange(of: DNDHidden, perform: { nv in
                     StatusManager.sharedInstance().hideDND(nv)
                 }).onAppear(perform: {
                     DNDHidden = StatusManager.sharedInstance().isDNDHidden()
                 })
-                Toggle("Hide Airplane Mode", isOn: $airplaneHidden).onChange(of: airplaneHidden, perform: { nv in
+                Toggle("隐藏飞行模式图标", isOn: $airplaneHidden).onChange(of: airplaneHidden, perform: { nv in
                     StatusManager.sharedInstance().hideAirplane(nv)
                 }).onAppear(perform: {
                     airplaneHidden = StatusManager.sharedInstance().isAirplaneHidden()
                 })
-                Toggle("Hide Cellular*", isOn: $cellHidden).onChange(of: cellHidden, perform: { nv in
+                Toggle("隐藏蜂窝*", isOn: $cellHidden).onChange(of: cellHidden, perform: { nv in
                     StatusManager.sharedInstance().hideCell(nv)
                 }).onAppear(perform: {
                     cellHidden = StatusManager.sharedInstance().isCellHidden()
                 })
             }
             Section {
-                Toggle("Hide Wi-Fi^", isOn: $wiFiHidden).onChange(of: wiFiHidden, perform: { nv in
+                Toggle("隐藏WiFi^", isOn: $wiFiHidden).onChange(of: wiFiHidden, perform: { nv in
                     StatusManager.sharedInstance().hideWiFi(nv)
                 }).onAppear(perform: {
                     wiFiHidden = StatusManager.sharedInstance().isWiFiHidden()
                 })
                 //                if UIDevice.current.userInterfaceIdiom != .pad {
-                Toggle("Hide Battery", isOn: $batteryHidden).onChange(of: batteryHidden, perform: { nv in
+                Toggle("隐藏电池", isOn: $batteryHidden).onChange(of: batteryHidden, perform: { nv in
                     StatusManager.sharedInstance().hideBattery(nv)
                 }).onAppear(perform: {
                     batteryHidden = StatusManager.sharedInstance().isBatteryHidden()
                 })
                 //                }
-                Toggle("Hide Bluetooth", isOn: $bluetoothHidden).onChange(of: bluetoothHidden, perform: { nv in
+                Toggle("隐藏蓝牙", isOn: $bluetoothHidden).onChange(of: bluetoothHidden, perform: { nv in
                     StatusManager.sharedInstance().hideBluetooth(nv)
                 }).onAppear(perform: {
                     bluetoothHidden = StatusManager.sharedInstance().isBluetoothHidden()
                 })
-                Toggle("Hide Alarm", isOn: $alarmHidden).onChange(of: alarmHidden, perform: { nv in
+                Toggle("隐藏弹窗", isOn: $alarmHidden).onChange(of: alarmHidden, perform: { nv in
                     StatusManager.sharedInstance().hideAlarm(nv)
                 }).onAppear(perform: {
                     alarmHidden = StatusManager.sharedInstance().isAlarmHidden()
                 })
-                Toggle("Hide Location", isOn: $locationHidden).onChange(of: locationHidden, perform: { nv in
+                Toggle("隐藏定位", isOn: $locationHidden).onChange(of: locationHidden, perform: { nv in
                     StatusManager.sharedInstance().hideLocation(nv)
                 }).onAppear(perform: {
                     locationHidden = StatusManager.sharedInstance().isLocationHidden()
                 })
-                Toggle("Hide Rotation Lock", isOn: $rotationHidden).onChange(of: rotationHidden, perform: { nv in
+                Toggle("隐藏旋转锁定", isOn: $rotationHidden).onChange(of: rotationHidden, perform: { nv in
                     StatusManager.sharedInstance().hideRotation(nv)
                 }).onAppear(perform: {
                     rotationHidden = StatusManager.sharedInstance().isRotationHidden()
                 })
-                Toggle("Hide AirPlay", isOn: $airPlayHidden).onChange(of: airPlayHidden, perform: { nv in
+                Toggle("隐藏隔空投送", isOn: $airPlayHidden).onChange(of: airPlayHidden, perform: { nv in
                     StatusManager.sharedInstance().hideAirPlay(nv)
                 }).onAppear(perform: {
                     airPlayHidden = StatusManager.sharedInstance().isAirPlayHidden()
                 })
-                Toggle("Hide CarPlay", isOn: $carPlayHidden).onChange(of: carPlayHidden, perform: { nv in
+                Toggle("隐藏CarPlay", isOn: $carPlayHidden).onChange(of: carPlayHidden, perform: { nv in
                     StatusManager.sharedInstance().hideCarPlay(nv)
                 }).onAppear(perform: {
                     carPlayHidden = StatusManager.sharedInstance().isCarPlayHidden()
                 })
-                Toggle("Hide VPN", isOn: $VPNHidden).onChange(of: VPNHidden, perform: { nv in
+                Toggle("隐藏VPN", isOn: $VPNHidden).onChange(of: VPNHidden, perform: { nv in
                     StatusManager.sharedInstance().hideVPN(nv)
                 }).onAppear(perform: {
                     VPNHidden = StatusManager.sharedInstance().isVPNHidden()
                 })
             } footer: {
-                Text("*Will also hide carrier name\n^Will also hide cellular data indicator")
+                Text("*也会隐藏运营商名称\n^也会隐藏蜂窝数据指示器")
             }
         }
         .tweakToggle(for: .StatusBar)
-        .navigationTitle("Status Bar")
+        .navigationTitle("状态栏")
     }
 }
 
