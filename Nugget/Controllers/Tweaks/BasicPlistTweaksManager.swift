@@ -44,7 +44,7 @@ class BasicPlistTweaksManager: ObservableObject {
         /* Internal Options Manager */
         .init(page: .Internal, tweaks: [
             .init(key: "UIStatusBarShowBuildVersion", title: "在状态栏显示构建版本", fileLocation: .globalPreferences, tweakType: .toggle),
-            .init(key: "NSForceRightToLeftWritingDirection", title: "Force Right-to-Left Layout", fileLocation: .globalPreferences, tweakType: .toggle),
+            .init(key: "NSForceRightToLeftWritingDirection", title: "强制从右向左布局", fileLocation: .globalPreferences, tweakType: .toggle),
             .init(key: "MetalForceHudEnabled", title: "启用调试HUD", fileLocation: .globalPreferences, tweakType: .toggle),
             .init(key: "AccessoryDeveloperEnabled", title: "启用配件调试", fileLocation: .globalPreferences, tweakType: .toggle),
             .init(key: "iMessageDiagnosticsEnabled", title: "启用iMessage调试", fileLocation: .globalPreferences, tweakType: .toggle),
