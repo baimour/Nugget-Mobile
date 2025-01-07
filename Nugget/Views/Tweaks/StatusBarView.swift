@@ -50,7 +50,7 @@ struct StatusBarView: View {
     @State private var batteryCapacityEnabled: Bool = false
     
     @State private var wiFiStrengthBars: Double = 0
-    @State private var wiFiStrengthBarsEnabled: Bool = false
+    @State private var wiFiStrengthBarsEnabled: Bool = true
     
     @State private var gsmStrengthBars: Double = 0
     @State private var gsmStrengthBarsEnabled: Bool = false
@@ -61,7 +61,7 @@ struct StatusBarView: View {
     @State private var displayingRawWiFiStrength: Bool = false
     @State private var displayingRawGSMStrength: Bool = false
     
-    @State private var DNDHidden: Bool = false
+    @State private var DNDHidden: Bool = true
     @State private var airplaneHidden: Bool = false
     @State private var cellHidden: Bool = false
     @State private var wiFiHidden: Bool = false
@@ -90,6 +90,7 @@ struct StatusBarView: View {
         "5G+", // 12
         "5GUW", // 13
         "5GUC", // 14
+        "White", // 15
     ]
     
     var body: some View {
@@ -234,7 +235,7 @@ struct StatusBarView: View {
             }
             
             Section {
-                Picker(selection: $radioSecondarySelection, label: Text("Visibility")) {
+                Picker(selection: $radioSecondarySelection, label: Text("显示隐藏")) {
                     Text("默认").tag(1)
                     Text("强制显示").tag(2)
                     Text("强制隐藏").tag(3)
