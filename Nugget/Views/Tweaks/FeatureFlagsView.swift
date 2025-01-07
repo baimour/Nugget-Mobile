@@ -18,13 +18,13 @@ struct FeatureFlagsView: View {
     }
     
     @State var featureFlagOptions: [FeatureFlagOption] = [
-        .init(label: "Toggle Lockscreen Clock Animation",
+        .init(label: "切换锁屏时钟动画",
               flag: .init(id: 0, category: .SpringBoard, flags: ["SwiftUITimeAnimation"])),
-        .init(label: "Toggle Duplicate Lockscreen Button and Lockscreen Quickswitch",
+        .init(label: "切换重复锁屏按钮和锁屏快速开关",
               flag: .init(id: 1, category: .SpringBoard, flags: ["AutobahnQuickSwitchTransition", "SlipSwitch", "PosterEditorKashida"])),
-        .init(label: "Enable Old Photo UI",
+        .init(label: "启用旧版照片UI",
               flag: .init(id: 2, category: .Photos, flags: ["Lemonade"], is_list: false, inverted: true)),
-        .init(label: "Enable Apple Intelligence",
+        .init(label: "启用苹果AI智能",
               flag: .init(id: 3, category: .SpringBoard, flags: ["Domino", "SuperDomino"]))
     ]
     
@@ -47,7 +47,7 @@ struct FeatureFlagsView: View {
             }
         }
         .tweakToggle(for: .FeatureFlags)
-        .navigationTitle("Feature Flags")
+        .navigationTitle("功能标志")
         .navigationViewStyle(.stack)
         .onAppear {
             // get the enabled feature flags
