@@ -11,10 +11,10 @@ import UIKit
 var currentUIAlertController: UIAlertController?
 
 
-fileprivate let errorString = NSLocalizedString("Error", comment: "")
+fileprivate let errorString = NSLocalizedString("发生错误", comment: "")
 fileprivate let okString = NSLocalizedString("OK", comment: "")
-fileprivate let helpString = NSLocalizedString("Help", comment: "")
-fileprivate let cancelString = NSLocalizedString("Cancel", comment: "")
+fileprivate let helpString = NSLocalizedString("帮助", comment: "")
+fileprivate let cancelString = NSLocalizedString("取消", comment: "")
 
 extension UIApplication {
     
@@ -33,7 +33,7 @@ extension UIApplication {
                 let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
                 let appBuild = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? ""
                 let systemVersion = device.systemVersion
-                body += "\n\(device.systemName) \(systemVersion), version \(appVersion) build \(appBuild))"
+                body += "\n\(device.systemName) \(systemVersion), 版本: \(appVersion) 构建: \(appBuild))"
             }
             
             currentUIAlertController = UIAlertController(title: title, message: body, preferredStyle: .alert)
